@@ -1,18 +1,18 @@
 {
     "visual": {
         "name": "hierarchySlicer",
-        "displayName": "HierarchySlicer",
-        "guid": "HierarchyTest123123123",
+        "displayName": "Siemens Hierarchy Slicer",
+        "guid": "HierarchySlicer17",
         "visualClassName": "HierarchySlicer",
-        "version": "2.2.2",
-        "description": "With the hierarchy TEST it is possible to represent a hierarchy as a single slicer. The different levels are shown as a tree.",
+        "version": "2.2.3",
+        "description": "With the hierarchy slicer it is possible to represent a hierarchy as a single slicer. The different levels are shown as a tree.",
         "supportUrl": "https://community.powerbi.com",
         "gitHubUrl": "https://github.com/Pmarouga/hierarchySlicer"
     },
     "apiVersion": "3.2.0",
     "author": {
-        "name": "SCHMSCH",
-        "email": "mail@test.gr"
+        "name": "Siemens",
+        "email": "mail@test.com"
     },
     "assets": {
         "icon": "assets/icon.svg"

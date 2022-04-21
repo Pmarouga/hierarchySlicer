@@ -138,7 +138,7 @@ export class HierarchySlicer implements IVisual {
     private landingPage: Selection<any, any, any, any>;
     private selectionManager: ISelectionManager;
     private tooltipServiceWrapper: ITooltipServiceWrapper;
-    private searchFilter: SearchFilter = SearchFilter.Wildcard;
+    private searchFilter: SearchFilter = SearchFilter.Start;
 
     public static DefaultFontFamily: string = "Segoe UI, Tahoma, Verdana, Geneva, sans-serif";
     public static DefaultFontSizeInPt: number = 11;
@@ -320,7 +320,7 @@ export class HierarchySlicer implements IVisual {
         let searchText: string | undefined;
         if (this.searchInput && settings.general.selfFilterEnabled) {
             searchText = (<HTMLInputElement>this.searchInput.node()).value;
-            if (!searchText) searchText = undefined;
+            if (!searchText || searchText.length < 0) searchText = undefined;
         } else {
             searchText = undefined;
         }
@@ -406,7 +406,7 @@ export class HierarchySlicer implements IVisual {
                     this.dataView,
                     this.jsonFilters,
                     searchText,
-                    SearchFilter.Wildcard,
+                    SearchFilter.Start,
                     this.settings
                 );
                 if (data) {
@@ -916,8 +916,7 @@ export class HierarchySlicer implements IVisual {
             "width",
             (d: IHierarchySlicerDataPoint) =>
                 `calc(((100vw - ${(d.level + 1) * expanderMargin}px) - 
-                ${
-                    this.settings.tooltipSettings.icon === TooltipIcon.None ? 0 : Math.ceil(iconSize) + scrollbarMargin
+                ${this.settings.tooltipSettings.icon === TooltipIcon.None ? 0 : Math.ceil(iconSize) + scrollbarMargin
                 }px - 
                 ${iconSize + 5}px`
         );
@@ -933,8 +932,8 @@ export class HierarchySlicer implements IVisual {
     private getHeaderHeight(): number {
         const searchHeight: number = this.settings.general.selfFilterEnabled
             ? textMeasurementService.estimateSvgTextHeight(
-                  this.getTextProperties(this.settings.search.fontFamily, this.settings.search.textSizeZoomed)
-              ) + 2
+                this.getTextProperties(this.settings.search.fontFamily, this.settings.search.textSizeZoomed)
+            ) + 2
             : 0;
         return (
             textMeasurementService.estimateSvgTextHeight(

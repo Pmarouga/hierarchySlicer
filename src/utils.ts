@@ -47,7 +47,7 @@ import ValueType = valueType.ValueType;
 import { SearchFilter } from "./enums";
 
 enum SQExprKind {
-    ColumnRef = 0,
+    ColumnRef = 2,
     Hierarchy = 6,
     HierarchyLevel = 7,
 }
@@ -96,7 +96,7 @@ export function parseFilter(
             }
         } else if (filterValues && filterValues !== "") {
             // Legacy version
-            return filterValues.split(",").map((filterValue) => parseOldOwnId(filterValue));
+            return filterValues.split(",").map(filterValue => parseOldOwnId(filterValue));
         }
     }
     return [];
@@ -120,7 +120,7 @@ export function getHierarchyColumns(
     if (levels.length === 0) {
         return columnMetadata;
     } else {
-        return levels.map((level) => level.sources[0]);
+        return levels.map(level => level.sources[0]);
     }
 }
 
@@ -132,7 +132,7 @@ export function parseExpand(expand: string): string[][] {
     } else {
         expanded = expand.split(","); // Old ids
     }
-    return expanded.map((e) => parseOwnId(e));
+    return expanded.map(e => parseOwnId(e));
 }
 
 export function parseOwnId(ownId: string): string[] {
@@ -149,7 +149,7 @@ export function parseNewOwnId(ownId: string): string[] {
 
 export function parseOldOwnId(ownId: string): string[] {
     const parts: string[] = ownId.substr(2).split("_|~");
-    return parts.map((part) => part.split("-")[0]);
+    return parts.map(part => part.split("-")[0]);
 }
 
 export function wildcardFilter(value: string, rule: string, filter: SearchFilter) {
@@ -166,8 +166,7 @@ export function wildcardFilter(value: string, rule: string, filter: SearchFilter
             return value.match(new RegExp(`${escapeRule}$`));
         case SearchFilter.Wildcard:
         default:
-            // return value.match(new RegExp(escapeRule));
-            return value.match(new RegExp(`^${escapeRule}`));
+            return value.match(new RegExp(escapeRule));
     }
 }
 
@@ -258,7 +257,7 @@ export function convertAdvancedFilterConditionsToSlicerData(
             if (value.value === null) {
                 result.push([""]);
             }
-            const columnIndex = columnDefs.findIndex((def) => {
+            const columnIndex = columnDefs.findIndex(def => {
                 const expr = <any>def.expr;
                 const arg = args[index];
                 const exprColumnName = expr.level ? expr.level : expr.ref;
@@ -281,7 +280,7 @@ export function convertAdvancedFilterConditionsToSlicerData(
             }
         });
 
-        const r = res.sort((r1, r2) => r1.index - r2.index).map((r) => r.value);
+        const r = res.sort((r1, r2) => r1.index - r2.index).map(r => r.value);
 
         result.push(r);
     });
@@ -293,7 +292,7 @@ export function checkMobile(userAgent: string): boolean {
 }
 
 export function getCommonLevel(selectionDataPoints: IHierarchySlicerDataPoint[]): number {
-    return selectionDataPoints.filter((d) => d.partialSelected).reduce((s, d) => Math.max(d.level, s), -1) + 1;
+    return selectionDataPoints.filter(d => d.partialSelected).reduce((s, d) => Math.max(d.level, s), -1) + 1;
 }
 
 export function applyFilter(
@@ -308,13 +307,13 @@ export function applyFilter(
     }
 
     const targets: IFilterTarget[] = columnFilters.slice(0, levels + 1);
-    const dataPoints = tree.filter((d) => d.ownId !== ["selectAll"]);
-    const filterDataPoints: IHierarchySlicerDataPoint[] = dataPoints.filter((d) => d.selected && d.level === levels);
+    const dataPoints = tree.filter(d => d.ownId !== ["selectAll"]);
+    const filterDataPoints: IHierarchySlicerDataPoint[] = dataPoints.filter(d => d.selected && d.level === levels);
 
     // create table from tree
     let filterValues: any[] = filterDataPoints.map((dataPoint: IHierarchySlicerDataPoint) => {
         // TupleValueType
-        return dataPoint.value.map((value) => {
+        return dataPoint.value.map(value => {
             return <any>{
                 // ITupleElementValue
                 value,

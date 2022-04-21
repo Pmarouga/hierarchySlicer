@@ -320,7 +320,7 @@ export class HierarchySlicer implements IVisual {
         let searchText: string | undefined;
         if (this.searchInput && settings.general.selfFilterEnabled) {
             searchText = (<HTMLInputElement>this.searchInput.node()).value;
-            if (!searchText || searchText.length < 3) searchText = undefined;
+            if (!searchText) searchText = undefined;
         } else {
             searchText = undefined;
         }

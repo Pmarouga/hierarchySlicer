@@ -1,18 +1,18 @@
 {
     "visual": {
         "name": "hierarchySlicer",
-        "displayName": "Hierarchy Slicer",
-        "guid": "HierarchySlicer1458836712039",
+        "displayName": "HierarchySlicer",
+        "guid": "HierarchyTest123123123",
         "visualClassName": "HierarchySlicer",
         "version": "2.2.2",
-        "description": "With the hierarchy slicer it is possible to represent a hierarchy as a single slicer. The different levels are shown as a tree.",
-        "supportUrl": "https://azurebi-docs.jppp.org/powerbi-visuals/index.html",
-        "gitHubUrl": "https://github.com/liprec/powerbi-hierarchySlicer"
+        "description": "With the hierarchy TEST it is possible to represent a hierarchy as a single slicer. The different levels are shown as a tree.",
+        "supportUrl": "https://community.powerbi.com",
+        "gitHubUrl": "https://github.com/Pmarouga/hierarchySlicer"
     },
     "apiVersion": "3.2.0",
     "author": {
-        "name": "Jan Pieter Posthuma",
-        "email": "mail@jppp.org"
+        "name": "SCHMSCH",
+        "email": "mail@test.gr"
     },
     "assets": {
         "icon": "assets/icon.svg"

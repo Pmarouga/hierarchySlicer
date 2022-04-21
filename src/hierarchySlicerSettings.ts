@@ -67,7 +67,7 @@ class SelectionSettings {
     public emptyString: boolean = true;
     public emptyLeafLabelDefault: string = "(Blank)";
     public selectAll: boolean = false; // Select All node
-    public selectAllLabel: string = "Select All";
+    public selectAllLabel: string = "Test Select All";
 }
 
 class HeaderSettings {

@@ -124,9 +124,9 @@ export function converter(
             const parents = dataPoints.filter((d: IHierarchySlicerDataPoint) => d.level === l);
             parents.forEach(
                 (d: IHierarchySlicerDataPoint) =>
-                    (d.isLeaf =
-                        dataPoints.filter((dp: IHierarchySlicerDataPoint) => isEqual(dp.parentId, d.ownId)).length ===
-                        0)
+                (d.isLeaf =
+                    dataPoints.filter((dp: IHierarchySlicerDataPoint) => isEqual(dp.parentId, d.ownId)).length ===
+                    0)
             );
         }
     }

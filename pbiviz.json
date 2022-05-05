@@ -2,17 +2,17 @@
     "visual": {
         "name": "hierarchySlicer",
         "displayName": "Siemens Hierarchy Slicer",
-        "guid": "HierarchySlicer17",
+        "guid": "SiemensHierarchySlicer",
         "visualClassName": "HierarchySlicer",
         "version": "2.2.3",
-        "description": "With the hierarchy slicer it is possible to represent a hierarchy as a single slicer. The different levels are shown as a tree.",
+        "description": "Forked the existing project of the hierarchy slicer, changed search to work from 1st character and search by starting string as default.",
         "supportUrl": "https://community.powerbi.com",
         "gitHubUrl": "https://github.com/Pmarouga/hierarchySlicer"
     },
     "apiVersion": "3.2.0",
     "author": {
-        "name": "Siemens",
-        "email": "mail@test.com"
+        "name": "Panagiotis Marougkas",
+        "email": "panagiotis.marougkas.ext@siemens.com"
     },
     "assets": {
         "icon": "assets/icon.svg"
